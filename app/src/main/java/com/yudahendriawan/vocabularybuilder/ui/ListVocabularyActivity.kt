@@ -1,5 +1,6 @@
 package com.yudahendriawan.vocabularybuilder.ui
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -21,6 +22,7 @@ class ListVocabularyActivity : AppCompatActivity() {
     private val adapter = ListVocabularyAdapter()
     private lateinit var viewModel: VocabularyViewModel
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityListVocabularyBinding.inflate(layoutInflater)
@@ -37,6 +39,7 @@ class ListVocabularyActivity : AppCompatActivity() {
 
         viewModel.getAllVocabulary.observe(this, {
             adapter.setData(it)
+            binding.tvVocabularyTotal.text = "Vocabulary Total : ${it.size}"
             adapter.setOnVocabListener(object : ListVocabularyAdapter.IVocabularyClickListener {
                 override fun onVocabClick(vocabulary: Vocabulary) {
                     startActivity(
