@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="32dp"
+    android:background="@color/white"
+    tools:context=".ui.AddVocabularyDialogActivity">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_add_vocabulary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/lightGrey"
+        android:hint="Add Vocabulary"
+        app:boxStrokeColor="@color/black"
+        app:hintTextColor="@color/darkGrey"
+        android:textColorHint="@color/darkGrey"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiet_add_vocabulary"
+            android:background="@color/lightGrey"
+            android:layout_width="match_parent"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_meaning_vocabulary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/lightGrey"
+        app:boxStrokeColor="@color/black"
+        android:textColorHint="@color/darkGrey"
+        android:layout_marginEnd="16dp"
+        android:hint="Vocabulary Meaning"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:hintTextColor="@color/darkGrey"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/til_add_vocabulary">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiet_meaning_vocabulary"
+            android:layout_width="match_parent"
+            android:background="@color/lightGrey"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_execute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="ADD"
+        app:layout_constraintBottom_toTopOf="@+id/tv_remove_vocabulary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/til_meaning_vocabulary" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/tv_remove_vocabulary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="Remove Vocabulary"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/button_execute"
+        app:layout_constraintStart_toStartOf="@+id/button_execute"
+        app:layout_constraintTop_toBottomOf="@+id/button_execute"
+        tools:visibility="visible" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
