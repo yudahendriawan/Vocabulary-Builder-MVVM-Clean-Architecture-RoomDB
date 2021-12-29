@@ -40,26 +40,27 @@ class ListVocabularyActivity : AppCompatActivity() {
         viewModel.getAllVocabulary.observe(this, {
             adapter.setData(it)
             binding.tvVocabularyTotal.text = "Vocabulary Total : ${it.size}"
-            adapter.setOnVocabListener(object : ListVocabularyAdapter.IVocabularyClickListener {
-                override fun onVocabClick(vocabulary: Vocabulary) {
-                    startActivity(
-                        Intent(
-                            this@ListVocabularyActivity,
-                            AddVocabularyDialogActivity::class.java
-                        ).apply {
-                            putExtra(
-                                AddVocabularyDialogActivity.TYPE,
-                                AddVocabularyDialogActivity.TYPE_VIEW
-                            )
-                            putExtra(AddVocabularyDialogActivity.VOCABULARY, vocabulary)
-                        })
-                }
+        })
 
-                override fun onVocabLongClick(meaning: String) {
-                    Toast.makeText(this@ListVocabularyActivity, meaning, Toast.LENGTH_SHORT).show()
-                }
+        adapter.setOnVocabListener(object : ListVocabularyAdapter.IVocabularyClickListener {
+            override fun onVocabClick(vocabulary: Vocabulary) {
+                startActivity(
+                    Intent(
+                        this@ListVocabularyActivity,
+                        AddVocabularyDialogActivity::class.java
+                    ).apply {
+                        putExtra(
+                            AddVocabularyDialogActivity.TYPE,
+                            AddVocabularyDialogActivity.TYPE_VIEW
+                        )
+                        putExtra(AddVocabularyDialogActivity.VOCABULARY, vocabulary)
+                    })
+            }
 
-            })
+            override fun onVocabLongClick(meaning: String) {
+                Toast.makeText(this@ListVocabularyActivity, meaning, Toast.LENGTH_SHORT).show()
+            }
+
         })
 
         binding.fabAdd.setOnClickListener {

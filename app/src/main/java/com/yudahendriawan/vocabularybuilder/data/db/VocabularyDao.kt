@@ -6,7 +6,7 @@ import com.yudahendriawan.vocabularybuilder.data.model.Vocabulary
 
 @Dao
 interface VocabularyDao {
-    @Query("SELECT * FROM vocabulary_table ORDER BY vocabulary ASC")
+    @Query("SELECT * FROM vocabulary_table ORDER BY id DESC")
     fun getAllVocabulary(): LiveData<List<Vocabulary>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="32dp"
     android:background="@color/white"
+    android:paddingBottom="32dp"
     tools:context=".ui.AddVocabularyDialogActivity">
 
     <com.google.android.material.textfield.TextInputLayout
@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:background="@color/lightGrey"
         android:hint="Add Vocabulary"
@@ -23,13 +24,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.25">
+        app:layout_constraintVertical_bias="0">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tiet_add_vocabulary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/lightGrey"
+            android:inputType="textCapWords"
             android:textColor="@color/black" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -39,23 +41,24 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:background="@color/lightGrey"
-        app:boxStrokeColor="@color/black"
-        android:textColorHint="@color/darkGrey"
         android:layout_marginEnd="16dp"
+        android:background="@color/lightGrey"
         android:hint="Vocabulary Meaning"
+        android:textColorHint="@color/darkGrey"
+        app:boxStrokeColor="@color/black"
+        app:hintTextColor="@color/darkGrey"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:hintTextColor="@color/darkGrey"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/til_add_vocabulary">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tiet_meaning_vocabulary"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:background="@color/lightGrey"
-            android:textColor="@color/black"
-            android:layout_height="wrap_content" />
+            android:inputType="textCapWords"
+            android:textColor="@color/black" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
@@ -63,7 +66,9 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="ADD"
+        android:text="Add"
+        android:textAllCaps="false"
+        app:cornerRadius="20dp"
         app:layout_constraintBottom_toTopOf="@+id/tv_remove_vocabulary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -76,8 +81,12 @@
         android:layout_marginTop="16dp"
         android:clickable="true"
         android:focusable="true"
-        android:text="Remove Vocabulary"
+        android:text="Remove"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
         android:visibility="gone"
+        app:backgroundTint="@color/lightGrey"
+        app:cornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="@+id/button_execute"
         app:layout_constraintStart_toStartOf="@+id/button_execute"
         app:layout_constraintTop_toBottomOf="@+id/button_execute"

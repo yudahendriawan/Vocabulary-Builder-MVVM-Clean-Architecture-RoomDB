@@ -10,7 +10,7 @@ import com.yudahendriawan.vocabularybuilder.databinding.ItemVocabularyBinding
 
 class ListVocabularyAdapter : RecyclerView.Adapter<ListVocabularyAdapter.ViewHolder>() {
 
-    var dataList = emptyList<Vocabulary>()
+    private var dataList = emptyList<Vocabulary>()
     private lateinit var listener: IVocabularyClickListener
 
     inner class ViewHolder(private val binding: ItemVocabularyBinding) :

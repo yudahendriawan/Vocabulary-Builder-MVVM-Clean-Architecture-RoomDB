@@ -43,11 +43,11 @@ class AddVocabularyDialogActivity : AppCompatActivity() {
         }
 
         if (type == TYPE_ADD) {
-            binding.buttonExecute.text = "ADD"
+            binding.buttonExecute.text = "Add"
             binding.tvRemoveVocabulary.visibility = View.GONE
             supportActionBar?.title = "Add"
         } else if (type == TYPE_VIEW) {
-            binding.buttonExecute.text = "UPDATE"
+            binding.buttonExecute.text = "Update"
             binding.tvRemoveVocabulary.visibility = View.VISIBLE
             supportActionBar?.title = "Update"
         }
@@ -56,7 +56,7 @@ class AddVocabularyDialogActivity : AppCompatActivity() {
             if (type == TYPE_ADD) {
                 insertData()
             } else if (type == TYPE_VIEW) {
-                if(vocabulary != null){
+                if (vocabulary != null) {
                     updateData()
                 }
             }
@@ -65,6 +65,7 @@ class AddVocabularyDialogActivity : AppCompatActivity() {
         binding.tvRemoveVocabulary.setOnClickListener {
             if (vocabulary != null) {
                 viewModel.deleteData(vocabulary = vocabulary!!)
+                showToast("Deleted! ${vocabulary!!.vocabulary}")
                 finish()
             }
         }
@@ -78,8 +79,23 @@ class AddVocabularyDialogActivity : AppCompatActivity() {
             val meaning = binding.tietMeaningVocabulary.text.toString().trim()
             val newVocabulary = Vocabulary(0, vocab, meaning)
             viewModel.insertData(newVocabulary)
+            showToast("Added ${vocab}!")
             finish()
+        } else {
+            if (binding.tietAddVocabulary.text.toString().trim().isEmpty()) {
+                binding.tietAddVocabulary.error = "Field must be filled"
+                binding.tietAddVocabulary.requestFocus()
+            }
+
+            if (binding.tietMeaningVocabulary.text.toString().trim().isEmpty()) {
+                binding.tietMeaningVocabulary.error = "Field must be filled"
+                binding.tietMeaningVocabulary.requestFocus()
+            }
         }
+    }
+
+    private fun showToast(text: String) {
+        Toast.makeText(this@AddVocabularyDialogActivity, text, Toast.LENGTH_SHORT).show()
     }
 
     private fun updateData() {
@@ -92,7 +108,7 @@ class AddVocabularyDialogActivity : AppCompatActivity() {
                 finish()
                 Toast.makeText(
                     this@AddVocabularyDialogActivity,
-                    "Succesfully updated!",
+                    "Updated ${vocab}!",
                     Toast.LENGTH_SHORT
                 ).show()
             }
@@ -106,7 +122,7 @@ class AddVocabularyDialogActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
+        when (item.itemId) {
             android.R.id.home -> onBackPressed()
         }
         return super.onOptionsItemSelected(item)
